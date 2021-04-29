@@ -11,7 +11,12 @@ public class Player_Movement : MonoBehaviour
     public Rigidbody2D rb;
 
     public SpriteRenderer playerSprite;
-  
+
+    public float angle;
+
+    Vector2 normalizedMovementInput;
+
+
 
     private void Update()
     {
@@ -20,6 +25,9 @@ public class Player_Movement : MonoBehaviour
 
         movementInput.x = Input.GetAxisRaw("Horizontal");
         movementInput.y = Input.GetAxisRaw("Vertical");
+
+        normalizedMovementInput = movementInput.normalized;
+
 
         //Animation
         if(movementInput.x == 1)
@@ -34,9 +42,9 @@ public class Player_Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movementInput * playerSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + normalizedMovementInput * playerSpeed * Time.fixedDeltaTime);
 
-        float angle = Mathf.Atan2((mousePos - rb.position).y, (mousePos - rb.position).x) * Mathf.Rad2Deg - 90f;
+        angle = Mathf.Atan2((mousePos - rb.position).y, (mousePos - rb.position).x) * Mathf.Rad2Deg - 90f;
         
     }
 

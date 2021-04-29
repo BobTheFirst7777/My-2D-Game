@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 8391573}
   playerSprite: {fileID: 1674233383}
+  angle: 0
 --- !u!50 &8391573
 Rigidbody2D:
   serializedVersion: 4
@@ -204,6 +205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01cf0347134f1f4ab1033a1c6f95f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bullet: {fileID: 2846959441312786352, guid: 0e19e634a94248a4a9b180aa9ac44a4b, type: 3}
+  muzzelForce: 15.94
+  movementScript: {fileID: 8391572}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
