@@ -23,7 +23,6 @@ public class Player_Shooting : MonoBehaviour
         GameObject bulletInstance = Instantiate(Bullet, gameObject.transform.position, Quaternion.Euler(0, 0, movementScript.angle));
         Rigidbody2D bulletRb = bulletInstance.GetComponent<Rigidbody2D>();
         bulletRb.AddForce(bulletRb.transform.up * muzzelForce, ForceMode2D.Impulse);
-
     }
 
 
