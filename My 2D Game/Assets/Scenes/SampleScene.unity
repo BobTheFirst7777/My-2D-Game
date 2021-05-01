@@ -217,8 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 97887287}
   - component: {fileID: 97887288}
-  - component: {fileID: 97887289}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnemyGFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,20 +289,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &97887289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 97887286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 969cc0d1bc827ff428477b773ec1bb4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyBullet: {fileID: 2846959441312786352, guid: 0e19e634a94248a4a9b180aa9ac44a4b, type: 3}
-  playerLocation: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,11 +463,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1244340367}
-  - component: {fileID: 1244340369}
   - component: {fileID: 1244340368}
-  m_Layer: 0
+  - component: {fileID: 1244340370}
+  m_Layer: 3
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533,27 +518,20 @@ PolygonCollider2D:
       - {x: -0.12907821, y: -0.22473422}
       - {x: 0.13651562, y: -0.22459164}
       - {x: 0.25781858, y: 0.0020128684}
---- !u!50 &1244340369
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &1244340370
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244340366}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969cc0d1bc827ff428477b773ec1bb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPosition: {fileID: 8391571}
+  enemyBullet: {fileID: 2846959441312786352, guid: 0e19e634a94248a4a9b180aa9ac44a4b, type: 3}
 --- !u!1 &1674233382
 GameObject:
   m_ObjectHideFlags: 0

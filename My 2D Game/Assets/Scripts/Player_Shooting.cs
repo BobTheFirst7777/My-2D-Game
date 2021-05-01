@@ -25,5 +25,4 @@ public class Player_Shooting : MonoBehaviour
         bulletRb.AddForce(bulletRb.transform.up * muzzelForce, ForceMode2D.Impulse);
     }
 
-
 }
