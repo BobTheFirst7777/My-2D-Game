@@ -4,12 +4,36 @@ using UnityEngine;
 
 public class Map_Movement : MonoBehaviour
 {
-
-    private bool isMoving;
+    [SerializeField]private bool isMoving;
     private Vector3 originalPos;
     private Vector3 targetPos;
     private float timeToMove = 0.2f;
     private float elapsedTime;
+
+    public Dictionary<Vector2, string> tileList;
+
+    public MapManager map;
+
+
+
+    private void Awake()
+    {
+        tileList = new Dictionary<Vector2, string>();
+        tileList.Add(new Vector2(0,1), "Plains");
+        tileList.Add(new Vector2(0,2), "Grass");
+        tileList.Add(new Vector2(0,3), "Plains");
+        tileList.Add(new Vector2(0,4), "Grass");
+        tileList.Add(new Vector2(0,5), "Plains");
+        tileList.Add(new Vector2(0,6), "Grass");
+
+        foreach(KeyValuePair<Vector2,string> pair in tileList)
+        {
+            map.construct(pair.Key, pair.Value);
+        }
+    }
+
+
+
 
     private void Update()
     {
@@ -52,6 +76,18 @@ public class Map_Movement : MonoBehaviour
         transform.position = targetPos;
 
         isMoving = false;
+
+        switch(tileList[new Vector2(transform.position.x, transform.position.y)])
+        {
+            case "Plains":
+                Debug.Log(Plains.name);
+                break;
+            case "Grass":
+                Debug.Log(Grass.name);
+                break;
+        }
+
+
     }
 
 
