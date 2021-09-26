@@ -205,8 +205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01cf0347134f1f4ab1033a1c6f95f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet: {fileID: 2846959441312786352, guid: 0e19e634a94248a4a9b180aa9ac44a4b, type: 3}
+  weapon: {fileID: 11400000, guid: 6fc6b58dc7c5e984491b557a8b61566c, type: 2}
   movementScript: {fileID: 8391572}
+  muzzelForce: 10
 --- !u!1 &97887286
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +343,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -525,7 +526,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244340366}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 969cc0d1bc827ff428477b773ec1bb4d, type: 3}
   m_Name: 

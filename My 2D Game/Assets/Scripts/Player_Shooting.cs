@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class Player_Shooting : MonoBehaviour
 {
-    public GameObject Bullet;
-
-    private float muzzelForce = 10f;
-
+    [SerializeField] private scriptableWeapon weapon;
     public Player_Movement movementScript;
+
+    [SerializeField] private float muzzelForce;
+    [SerializeField] private float range;
+
+    private void Start()
+    {
+        muzzelForce = weapon.speed;
+        range = weapon.range;
+    }
+
 
     private void Update()
     {
@@ -20,9 +27,11 @@ public class Player_Shooting : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bulletInstance = Instantiate(Bullet, gameObject.transform.position, Quaternion.Euler(0, 0, movementScript.angle));
+        GameObject bulletInstance = Instantiate(weapon.bulletPrefab, gameObject.transform.position,
+                                                Quaternion.Euler(0, 0, movementScript.angle));
         Rigidbody2D bulletRb = bulletInstance.GetComponent<Rigidbody2D>();
         bulletRb.AddForce(bulletRb.transform.up * muzzelForce, ForceMode2D.Impulse);
+        bulletInstance.GetComponent<Bullet>().deathSentence(weapon.range);
     }
 
 }

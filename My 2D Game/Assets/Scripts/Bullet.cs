@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
+    private bool record = false;
+    private Vector2 previousLoc;
+    public float distanceTravelled = 0f;
 
     private void Start()
     {
-        Destroy(gameObject, 4f);
+        record = true;
+        previousLoc = transform.position;
     }
 
 
@@ -21,5 +24,21 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (record)
+        {
+            distanceTravelled += Vector3.Distance(transform.position, previousLoc);
+            previousLoc = transform.position;
+        }
+    }
+
+    public void deathSentence(float range)
+    {
+        if (distanceTravelled>=range)
+        {
+            Destroy(gameObject);
+        }
+    }
 
 }
