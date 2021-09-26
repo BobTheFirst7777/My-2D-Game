@@ -19,17 +19,6 @@ public class Map_Movement : MonoBehaviour
     private void Awake()
     {
         tileList = new Dictionary<Vector2, string>();
-        tileList.Add(new Vector2(0,1), "Plains");
-        tileList.Add(new Vector2(0,2), "Grass");
-        tileList.Add(new Vector2(0,3), "Plains");
-        tileList.Add(new Vector2(0,4), "Grass");
-        tileList.Add(new Vector2(0,5), "Plains");
-        tileList.Add(new Vector2(0,6), "Grass");
-
-        foreach(KeyValuePair<Vector2,string> pair in tileList)
-        {
-            map.construct(pair.Key, pair.Value);
-        }
     }
 
 
@@ -72,23 +61,13 @@ public class Map_Movement : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
         transform.position = targetPos;
-
         isMoving = false;
 
-        switch(tileList[new Vector2(transform.position.x, transform.position.y)])
-        {
-            case "Plains":
-                Debug.Log(Plains.name);
-                break;
-            case "Grass":
-                Debug.Log(Grass.name);
-                break;
-        }
-
-
+        map.mapLogic(tileList[new Vector2(transform.position.x, transform.position.y)]);
     }
+
+    
 
 
 }

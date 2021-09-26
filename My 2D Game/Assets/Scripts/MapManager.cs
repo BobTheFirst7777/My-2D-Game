@@ -6,10 +6,24 @@ public class MapManager : MonoBehaviour
 {
     public Map_Movement scripty;
 
-    [SerializeField] private GameObject plainsTile;
-    [SerializeField] private GameObject grassTile;
 
+    private void Start()
+    {
+        Transform[] tileChildren = new Transform[transform.childCount];
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            tileChildren[i] = transform.GetChild(i);
+        }
 
+        foreach(Transform childT in tileChildren)
+        {
+            scripty.tileList.Add(new Vector2(childT.position.x,childT.position.y), childT.tag);
+            Debug.Log(childT.position + childT.tag);
+        }
+
+    }
+
+    /*
     public void construct(Vector2 pos, string ident)
     {
         switch(ident)
@@ -27,11 +41,44 @@ public class MapManager : MonoBehaviour
                 break;
         }
     }
+    */
 
-    public void mapLogic()
+
+    public void mapLogic(string tileName)
     {
+        switch (tileName)
+        {
+            case "Plains":
+                Debug.Log(Plains.name);
+                if (Random.value >= Plains.natEncounterrate) { Encounter("Plains"); }
+                break;
 
+            case "Grass":
+                Debug.Log(Grass.name);
+                if (Random.value >= Plains.natEncounterrate) { Encounter("Grass"); }
+                break;
+
+            case "Path":
+                Debug.Log(Path.name);
+                break;
+
+            case "Woods":
+                Debug.Log(Woods.name);
+                break;
+
+            default:
+                Debug.Log("OOPSIES");
+                break;
+        }
     }
+
+    public void Encounter(string encounterName)
+    {
+        Debug.Log(encounterName + "POKEMON MUSIC");
+    }
+
+
+
 
 
 }
