@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private bool record = false;
     private Vector2 previousLoc;
-    public float distanceTravelled = 0f;
+    public float distanceTravelled;
+    public float blob;
 
     private void Start()
     {
-        record = true;
         previousLoc = transform.position;
     }
 
@@ -26,19 +25,22 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (record)
-        {
-            distanceTravelled += Vector3.Distance(transform.position, previousLoc);
-            previousLoc = transform.position;
-        }
-    }
-
-    public void deathSentence(float range)
-    {
-        if (distanceTravelled>=range)
+        distanceTravelled += Vector3.Distance(transform.position, previousLoc);
+        previousLoc = transform.position;
+        if (distanceTravelled > blob)
         {
             Destroy(gameObject);
         }
     }
+
+    /*
+    public void deathSentence(float pog)
+    {
+        if (distanceTravelled>=pog)
+        {
+            Debug.Log("Why");
+        }
+    }
+    */
 
 }

@@ -10,6 +10,7 @@ public class Player_Shooting : MonoBehaviour
     [SerializeField] private float muzzelForce;
     [SerializeField] private float range;
 
+
     private void Start()
     {
         muzzelForce = weapon.speed;
@@ -31,7 +32,7 @@ public class Player_Shooting : MonoBehaviour
                                                 Quaternion.Euler(0, 0, movementScript.angle));
         Rigidbody2D bulletRb = bulletInstance.GetComponent<Rigidbody2D>();
         bulletRb.AddForce(bulletRb.transform.up * muzzelForce, ForceMode2D.Impulse);
-        bulletInstance.GetComponent<Bullet>().deathSentence(weapon.range);
+        bulletInstance.GetComponent<Bullet>().blob = weapon.range;
     }
 
 }
