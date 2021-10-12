@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MapManager : MonoBehaviour
 {
     public Map_Movement scripty;
 
+    public transManager tm;
 
     private void Start()
     {
@@ -50,12 +52,12 @@ public class MapManager : MonoBehaviour
         {
             case "Plains":
                 Debug.Log(Plains.name);
-                if (Random.value >= Plains.natEncounterrate) { Encounter("Plains"); }
+                if (Random.value >= Plains.natEncounterrate) { tm.PlainsEncounter(); }
                 break;
 
             case "Grass":
                 Debug.Log(Grass.name);
-                if (Random.value >= Plains.natEncounterrate) { Encounter("Grass"); }
+                if (Random.value >= Plains.natEncounterrate) { tm.GrassEncounter(); }
                 break;
 
             case "Path":
@@ -71,14 +73,6 @@ public class MapManager : MonoBehaviour
                 break;
         }
     }
-
-    public void Encounter(string encounterName)
-    {
-        Debug.Log(encounterName + "POKEMON MUSIC");
-    }
-
-
-
 
 
 }

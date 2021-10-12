@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
-    float playerSpeed = 3f;
+    float playerSpeed = 5f;
     Vector2 movementInput;
     Vector2 mousePos;
 

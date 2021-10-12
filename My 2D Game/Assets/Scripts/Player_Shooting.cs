@@ -9,24 +9,39 @@ public class Player_Shooting : MonoBehaviour
 
     [SerializeField] private float muzzelForce;
     [SerializeField] private float range;
+    [SerializeField] private bool isFiring;
+    [SerializeField] private float dexRate;
+
 
 
     private void Start()
     {
         muzzelForce = weapon.speed;
         range = weapon.range;
+        dexRate = weapon.fireRate;
+
+        isFiring = false;
     }
 
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            Shoot(); 
+            if (isFiring == true)
+            {
+                isFiring = false;
+                CancelInvoke();
+            }
+            else
+            {
+                InvokeRepeating("Shoot", 0, 1/dexRate);
+                isFiring = true;
+            }
         }
     }
 
-    void Shoot()
+    private void Shoot()
     {
         GameObject bulletInstance = Instantiate(weapon.bulletPrefab, gameObject.transform.position,
                                                 Quaternion.Euler(0, 0, movementScript.angle));

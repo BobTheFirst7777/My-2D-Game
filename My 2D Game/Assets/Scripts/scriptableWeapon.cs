@@ -12,5 +12,5 @@ public class scriptableWeapon : ScriptableObject
     public float range;
     public float damage;
     public float speed;
-
+    public float fireRate;
 }

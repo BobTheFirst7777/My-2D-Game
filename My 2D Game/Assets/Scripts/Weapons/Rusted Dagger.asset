@@ -17,3 +17,4 @@ MonoBehaviour:
   range: 5
   damage: 40
   speed: 20
+  fireRate: 1.2
