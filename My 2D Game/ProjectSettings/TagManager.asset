@@ -9,6 +9,8 @@ TagManager:
   - Plains
   - Woods
   - Path
+  - Town
+  - Bullet
   layers:
   - Default
   - TransparentFX

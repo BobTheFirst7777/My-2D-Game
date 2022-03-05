@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4252406817250680555}
   m_Layer: 6
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,7 +65,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.00035458803, y: 0.006800413}
@@ -95,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceTravelled: 0
   blob: 0
+  localDamage: 0
 --- !u!1 &7869963148269274945
 GameObject:
   m_ObjectHideFlags: 0

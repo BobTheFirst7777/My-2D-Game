@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Map_Movement : MonoBehaviour
 {
+    public bool encounter = false;
+
     [SerializeField]private bool isMoving;
     private Vector3 originalPos;
     private Vector3 targetPos;
-    private float timeToMove = 0.2f;
+    private float timeToMove = 0.16f;
     private float elapsedTime;
 
     public Dictionary<Vector2, string> tileList;
@@ -26,7 +28,7 @@ public class Map_Movement : MonoBehaviour
 
     private void Update()
     {
-        if (!isMoving)
+        if (!isMoving && !encounter)
         {
             if (Input.GetKeyDown(KeyCode.W))
             {

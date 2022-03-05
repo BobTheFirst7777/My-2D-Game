@@ -6,14 +6,14 @@ public class EnemyAI : MonoBehaviour
 {
     public ScriptableEnemy identity;
 
-    [SerializeField] private float hp;
-    [SerializeField] private float armour;
-    [SerializeField] private float speed;
-    [SerializeField] private string myName;
+    [SerializeField] public float hp;
+    [SerializeField] public float armour;
+    [SerializeField] public float speed;
+    [SerializeField] public string myName;
     [SerializeField] private scriptableWeapon myGun;
     [SerializeField] private float range;
     [SerializeField] private float muzzelForce;
-    [SerializeField] private string movementAItype;
+    [SerializeField] public string movementAItype;
 
     [SerializeField] private Vector2 targetPos;
     [SerializeField] private Vector2 curPos;
@@ -97,7 +97,7 @@ public class EnemyAI : MonoBehaviour
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), bulletInstance.GetComponent<Collider2D>());
 
         bulletInstance.GetComponent<Bullet>().blob = myGun.range;
-        Debug.Log("Hi");
+        bulletInstance.GetComponent<Bullet>().localDamage = myGun.damage;
     }
 
 

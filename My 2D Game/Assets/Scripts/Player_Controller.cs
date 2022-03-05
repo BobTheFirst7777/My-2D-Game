@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Movement : MonoBehaviour
+public class Player_Controller : MonoBehaviour
 {
+    public float playerHealth;
+
+
+
+
     float playerSpeed = 5f;
     Vector2 movementInput;
     Vector2 mousePos;

@@ -52,12 +52,16 @@ public class MapManager : MonoBehaviour
         {
             case "Plains":
                 Debug.Log(Plains.name);
-                if (Random.value >= Plains.natEncounterrate) { tm.PlainsEncounter(); }
+                if (Random.value <= Plains.natEncounterrate)
+                {
+                    tm.PlainsEncounter();
+                    scripty.encounter = true;
+                }
                 break;
 
             case "Grass":
                 Debug.Log(Grass.name);
-                if (Random.value >= Plains.natEncounterrate) { tm.GrassEncounter(); }
+                if (Random.value <= Plains.natEncounterrate) { tm.GrassEncounter(); }
                 break;
 
             case "Path":
