@@ -9,6 +9,8 @@ public class scriptableWeapon : ScriptableObject
 
     public GameObject bulletPrefab;
 
+    public string weaponType;
+
     public float range;
     public float damage;
     public float speed;

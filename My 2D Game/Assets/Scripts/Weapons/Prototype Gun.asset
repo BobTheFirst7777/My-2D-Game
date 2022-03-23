@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7914270fdf5f654294fe3af73e64309, type: 3}
-  m_Name: Sword
+  m_Name: Prototype Gun
   m_EditorClassIdentifier: 
-  weaponName: Default Sword
-  bulletPrefab: {fileID: 2846959441312786352, guid: 0e19e634a94248a4a9b180aa9ac44a4b, type: 3}
-  range: 1.5
+  weaponName: Prototype Gun
+  bulletPrefab: {fileID: 0}
+  weaponType: Gun
+  range: 0
   damage: 50
-  speed: 10
-  fireRate: 1
+  speed: 0
+  fireRate: 0.5

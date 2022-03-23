@@ -7,11 +7,10 @@ public class Player_Controller : MonoBehaviour
     public float playerHealth;
 
 
-
-
     float playerSpeed = 5f;
     Vector2 movementInput;
-    Vector2 mousePos;
+    public Vector2 mousePos;
+
 
     public Rigidbody2D rb;
 

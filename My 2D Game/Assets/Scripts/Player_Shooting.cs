@@ -6,11 +6,17 @@ public class Player_Shooting : MonoBehaviour
 {
     [SerializeField] private scriptableWeapon weapon;
     public Player_Controller movementScript;
+    [SerializeField] private LineRenderer bulletVFX;
 
     [SerializeField] private float muzzelForce;
     [SerializeField] private float range;
     [SerializeField] private bool isFiring;
     [SerializeField] private float dexRate;
+    [SerializeField] private string weaponType;
+
+    [SerializeField] private Vector3 myMouse;
+
+
 
 
 
@@ -19,6 +25,9 @@ public class Player_Shooting : MonoBehaviour
         muzzelForce = weapon.speed;
         range = weapon.range;
         dexRate = weapon.fireRate;
+        weaponType = weapon.weaponType;
+
+        bulletVFX.enabled = false;
 
         isFiring = false;
     }
@@ -26,22 +35,52 @@ public class Player_Shooting : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        switch (weaponType)
         {
-            if (isFiring == true)
-            {
-                isFiring = false;
-                CancelInvoke();
-            }
-            else
-            {
-                InvokeRepeating("Shoot", 0, 1/dexRate);
-                isFiring = true;
-            }
+            case "Sword":
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (isFiring == true)
+                    {
+                        isFiring = false;
+                        CancelInvoke();
+                    }
+                    else
+                    {
+                        InvokeRepeating("ShootSword", 0, 1 / dexRate);
+                        isFiring = true;
+                    }
+                }
+                break;
+
+            case "Gun":
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (isFiring == true)
+                    {
+                        isFiring = false;
+                        CancelInvoke();
+                    }
+                    else
+                    {
+                        StartCoroutine(ShootBullet(1/dexRate));
+                        isFiring = true;
+                    }
+                }
+                break;
+
+            default:
+                break;
+
         }
+
+
+
+
+
     }
 
-    private void Shoot()
+    private void ShootSword()
     {
         GameObject bulletInstance = Instantiate(weapon.bulletPrefab, gameObject.transform.position,
                                                 Quaternion.Euler(0, 0, movementScript.angle));
@@ -52,6 +91,26 @@ public class Player_Shooting : MonoBehaviour
 
         bulletInstance.GetComponent<Bullet>().blob = weapon.range;
         bulletInstance.GetComponent<Bullet>().localDamage = weapon.damage;
+    }
+
+
+
+
+    IEnumerator ShootBullet(float tim)
+    {
+        while (true)
+        {
+            myMouse = new Vector3(movementScript.mousePos.x,movementScript.mousePos.y,0)-gameObject.transform.position;
+            myMouse.Normalize();
+            Debug.Log("HENLO");
+            bulletVFX.enabled = true;
+            bulletVFX.SetPosition(0, gameObject.transform.position);
+            bulletVFX.SetPosition(1, myMouse*100);
+            yield return new WaitForSeconds(0.04f);
+            bulletVFX.enabled = false;
+            yield return new WaitForSeconds(tim);
+        }
+
     }
 
 }
